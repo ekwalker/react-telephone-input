@@ -316,6 +316,11 @@ export var ReactTelephoneInput = createReactClass({
                     caretPosition++;
                 }
 
+               if(diff > 1) {
+                  let newPosition = caretPosition + (diff - 1);
+                  setTimeout(() => { this.refs.numberInput.setSelectionRange(newPosition, newPosition); }, 0);
+               }
+
                 if(diff > 0) {
                     caretPosition = caretPosition - diff;
                 }
