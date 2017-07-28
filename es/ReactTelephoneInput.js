@@ -316,9 +316,18 @@ export var ReactTelephoneInput = createReactClass({
             freezeSelection: freezeSelection,
             selectedCountry: newSelectedCountry.dialCode.length > 0 ? newSelectedCountry : this.state.selectedCountry
         }, function () {
+            var _this2 = this;
+
             if (isModernBrowser) {
                 if (caretPosition === 1 && formattedNumber.length === 2) {
                     caretPosition++;
+                }
+
+                if (diff > 1) {
+                    var newPosition = caretPosition + (diff - 1);
+                    setTimeout(function () {
+                        _this2.refs.numberInput.setSelectionRange(newPosition, newPosition);
+                    }, 0);
                 }
 
                 if (diff > 0) {
